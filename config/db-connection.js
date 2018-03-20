@@ -2,9 +2,9 @@
 
 const mongoose = require('mongoose')
 const Promise = require('bluebird')
-const config = require('./settings')
+const main = require('./main')
 const logger = require('./logger')
-const env = require('./settings').environments
+const env = main.environments
 
 const defaultEnv = env.TEST
 
@@ -13,7 +13,7 @@ if (!process.env.NODE_ENV) {
 }
 
 mongoose.Promise = Promise
-mongoose.connect(config.database[process.env.NODE_ENV], { useMongoClient: true })
+mongoose.connect(main.database[process.env.NODE_ENV], { useMongoClient: true })
 
 const db = mongoose.connection
 

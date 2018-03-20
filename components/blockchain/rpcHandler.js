@@ -3,7 +3,7 @@
 const settings = require('../../config/bc-connection')
 const Web3 = require('web3')
 
-const web3 = new Web3(new Web3.providers.HttpProvider(settings.rpc_endpoint))
+const web3 = new Web3(new Web3.providers.HttpProvider(settings.rpc_endpoint[process.env.NODE_ENV]))
 const eth = web3.eth;
 
 async function getMembersOfGroup (groupAddress) {
